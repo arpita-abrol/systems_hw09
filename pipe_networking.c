@@ -1,10 +1,10 @@
-H#include <stdlib.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
 #include <fcntl.h>
 
-#include <pipe_networking.h>
+#include "pipe_networking.h"
 
 int client_handshake(int *to_client) {
 
@@ -16,7 +16,7 @@ int client_handshake(int *to_client) {
 
   
   //Step 4: Connects to WKP, sends name of 'private' fifo
-  int *to_client = open("wkp", O_WRONLY); //writing
+  *to_client = open("wkp", O_WRONLY); //writing
   printf("[client] connected to WKP");
 
   write(*to_client, private_pipe, strlen(private_pipe));
@@ -89,7 +89,7 @@ int server_handshake(int *from_client) {
 
   //Step 9:
   char new_message[MESSAGE_BUFFER_SIZE];
-  read(fd, new_message, MESSAGE_BUFFER_SIZE];
+  read(fd, new_message, MESSAGE_BUFFER_SIZE);
   printf("[server] message received");
   
   return fd;
