@@ -2,10 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <sys/types.h?
+#include <sys/stat.>
+#include <fcntl.h>
 
 #include "pipe_networking.h"
 
 int main() {
+  printf("[client] running\n");
 
   int to_server, from_server;
 
